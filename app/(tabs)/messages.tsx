@@ -1,5 +1,9 @@
-import { Text } from "tamagui";
+import { Text, YStack } from "tamagui";
 
 export default function Messages() {
-  return <Text>Hello Worldssss</Text>;
+	return (
+		<YStack pt={"$4"} f={1} bg="$background">
+			<Text>Home</Text>
+		</YStack>
+	);
 }

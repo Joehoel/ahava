@@ -1,10 +1,9 @@
-import Safe from "@components/Safe";
-import { H1 } from "tamagui";
+import { Text, YStack } from "tamagui";
 
 export default function Home() {
 	return (
-		<Safe>
-			<H1>Hello</H1>
-		</Safe>
+		<YStack pt={"$4"} f={1} bg="$background">
+			<Text>Home</Text>
+		</YStack>
 	);
 }

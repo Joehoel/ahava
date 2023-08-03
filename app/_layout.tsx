@@ -5,10 +5,13 @@ import {
 	DefaultTheme,
 	ThemeProvider,
 } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Constants from "expo-constants";
 import { useFonts } from "expo-font";
 import { Slot, SplashScreen } from "expo-router";
 import { TamaguiProvider, Text, Theme } from "tamagui";
+
+const queryClient = new QueryClient();
 
 import config from "../tamagui.config";
 
@@ -52,17 +55,19 @@ function Layout() {
 	}
 
 	return (
-		<TamaguiProvider config={config}>
-			<Suspense fallback={<Text>Loading...</Text>}>
-				<Theme name={colorScheme}>
-					<ThemeProvider
-						value={colorScheme === "light" ? DefaultTheme : DarkTheme}
-					>
-						<Slot />
-					</ThemeProvider>
-				</Theme>
-			</Suspense>
-		</TamaguiProvider>
+		<QueryClientProvider client={queryClient}>
+			<TamaguiProvider config={config}>
+				<Suspense fallback={<Text>Loading...</Text>}>
+					<Theme name={colorScheme}>
+						<ThemeProvider
+							value={colorScheme === "light" ? DefaultTheme : DarkTheme}
+						>
+							<Slot />
+						</ThemeProvider>
+					</Theme>
+				</Suspense>
+			</TamaguiProvider>
+		</QueryClientProvider>
 	);
 }
 
