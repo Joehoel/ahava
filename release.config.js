@@ -1,6 +1,34 @@
 module.exports = {
 	branches: ["main"],
 	plugins: [
+		"semantic-release-react-native",
+		[
+			"@google/semantic-release-replace-plugin",
+			{
+				replacements: [
+					{
+						files: ["app.json"],
+						from: '"version": ".*"',
+						to: '"version": "${nextRelease.version}"',
+					},
+					{
+						files: ["app.json"],
+						from: '"buildNumber": ".*"',
+						to: '"buildNumber": "${nextRelease.version}"',
+					},
+					{
+						files: ["app.json"],
+						from: `"versionCode": .*$`,
+						to: (match) => {
+							const hadComma = match.includes(",");
+							const currVersion = parseInt(match.split(":")[1].trim()) || 0;
+							const nextVersion = currVersion + 1;
+							return `"versionCode": ${nextVersion}${hadComma ? "," : ""}`;
+						},
+					},
+				],
+			},
+		],
 		[
 			"@semantic-release/commit-analyzer",
 			{
@@ -43,27 +71,17 @@ module.exports = {
 			},
 		],
 		[
-			"@google/semantic-release-replace-plugin",
-			{
-				replacements: [
-					{
-						files: ["package.json", "app.json"],
-						from: '"version": ".*"', // eslint-disable-line
-						to: '"version": "${nextRelease.version}"', // eslint-disable-line
-					},
-					{
-						files: ["app.json"],
-						from: `"versionCode": [^\n]*`, // eslint-disable-line
-						to: (match) =>
-							`"versionCode": ${parseInt(match.split(":")[1].trim()) + 1}`, // eslint-disable-line
-					},
-				],
-			},
-		],
-		[
 			"@semantic-release/git",
 			{
-				assets: ["app.json", "package.json", "yarn.lock", "CHANGELOG.md"],
+				assets: [
+					"CHANGELOG.md",
+					"package.json",
+					"yarn.lock",
+					"app.json",
+					"android/app/build.gradle",
+					"ios/**/Info.plist",
+					"ios/**/*.pbxproj",
+				],
 				message:
 					"chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
 			},

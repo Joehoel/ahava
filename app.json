@@ -1,6 +1,7 @@
 {
 	"expo": {
 		"scheme": "ahava",
+		"version": "1.0.0",
 		"userInterfaceStyle": "automatic",
 		"splash": {
 			"backgroundColor": "#000669",
