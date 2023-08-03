@@ -1,6 +1,11 @@
 {
-  "compilerOptions": {
-     "module": "ES2020"
-  },
-  "extends": "expo/tsconfig.base"
+	"compilerOptions": {
+		"module": "ES2020",
+		"paths": {
+			"@components/*": ["./components/*"],
+			"@components": ["./components"]
+		}
+	},
+	"extends": "expo/tsconfig.base",
+	"include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

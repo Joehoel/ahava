@@ -1,7 +1,8 @@
 {
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true,
+		"source.fixAll": true
 	},
+	"editor.tabSize": 2,
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
 	"[typescript]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -19,6 +20,8 @@
 		"**/Thumbs.db": true,
 		".expo": true,
 		".yarn": true,
-		"node_modules": true,
+		"node_modules": true
 	},
+	"java.compile.nullAnalysis.mode": "disabled",
+	"java.configuration.updateBuildConfiguration": "disabled"
 }

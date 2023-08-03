@@ -1,14 +1,28 @@
 {
-  "expo": {
-    "scheme": "tamagui-app",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "backgroundColor": "#ddffe2",
-      "image": "./assets/splash.png",
-      "resizeMode": "contain"
-    },
-    "icon": "./assets/icon.png",
-    "name": "ahava",
-    "slug": "ahava"
-  }
+	"expo": {
+		"scheme": "ahava",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"backgroundColor": "#000669",
+			"image": "./assets/icon.png",
+			"resizeMode": "contain"
+		},
+		"icon": "./assets/icon.png",
+		"name": "Ahava (DEV)",
+		"slug": "ahava",
+		"android": {
+			"package": "nl.byxl.dev.ahava"
+		},
+		"experiments": {
+			"tsconfigPaths": true,
+			"typedRoutes": true
+		},
+		"ios": {
+			"bundleIdentifier": "nl.byxl.dev.ahava"
+		},
+		"web": {
+			"bundler": "metro"
+		},
+		"plugins": ["expo-router"]
+	}
 }
