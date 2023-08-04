@@ -71,6 +71,7 @@ function Layout() {
 	);
 }
 
+// Storybook
 let AppEntryPoint = Layout;
 
 if (Constants?.expoConfig?.extra?.storybookEnabled === "true") {
