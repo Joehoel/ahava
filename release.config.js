@@ -1,40 +1,6 @@
 module.exports = {
 	branches: ["main"],
 	plugins: [
-		"semantic-release-react-native",
-		[
-			"@google/semantic-release-replace-plugin",
-			{
-				replacements: [
-					{
-						files: ["app.json"],
-						from: '"version": ".*"',
-						to: '"version": "${nextRelease.version}"',
-					},
-					{
-						files: ["app.json"],
-						from: '"buildNumber": ".*"',
-						to: '"buildNumber": "${nextRelease.version}"',
-					},
-					{
-						files: ["app.json"],
-						from: `"versionCode": .*$`,
-						to: (match) => {
-							const hadComma = match.includes(",");
-							const currVersion = parseInt(match.split(":")[1].trim()) || 0;
-							const nextVersion = currVersion + 1;
-							return `"versionCode": ${nextVersion}${hadComma ? "," : ""}`;
-						},
-					},
-				],
-			},
-		],
-		[
-			"@semantic-release/commit-analyzer",
-			{
-				preset: "conventionalcommits",
-			},
-		],
 		[
 			"@semantic-release/release-notes-generator",
 			{
@@ -71,6 +37,20 @@ module.exports = {
 			},
 		],
 		[
+			"semantic-release-expo",
+			{
+				versions: {
+					version: "${next.raw}",
+					android: "${increment}",
+					ios: "${next.raw}",
+				},
+			},
+		],
+		"@semantic-release/commit-analyzer",
+		"@semantic-release/release-notes-generator",
+		"@semantic-release/changelog",
+		"@semantic-release/npm",
+		[
 			"@semantic-release/git",
 			{
 				assets: [
@@ -86,7 +66,5 @@ module.exports = {
 					"chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
 			},
 		],
-		"@semantic-release/npm",
-		"@semantic-release/github",
 	],
 };
