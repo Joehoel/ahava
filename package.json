@@ -13,7 +13,8 @@
 		"storybook:ios": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' yarn ios",
 		"storybook:android": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' yarn android",
 		"upgrade:tamagui": "$npm_exec path up '*tamagui*' '@tamagui/*'",
-		"update-types": "npx supabase gen types typescript --project-id \"$PROJECT_REF\" > lib/supabase/types.ts"
+		"update-types": "npx supabase gen types typescript --project-id \"$PROJECT_REF\" > lib/supabase/types.ts",
+		"postversion": "expo prebuild"
 	},
 	"dependencies": {
 		"@react-native-async-storage/async-storage": "1.18.2",
