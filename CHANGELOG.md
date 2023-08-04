@@ -1,3 +1,24 @@
+## [1.2.0](https://github.com/Joehoel/ahava/compare/v1.1.0...v1.2.0) (2023-08-04)
+
+
+### :broom: Chore
+
+* add back github release plugin ([258ac28](https://github.com/Joehoel/ahava/commit/258ac2819956fd71cf78d23882478ec2d0e45b88))
+
+
+### :sparkles: Features
+
+* add workflow dispatch to trigger manually ([1ae2bbf](https://github.com/Joehoel/ahava/commit/1ae2bbfcf278e864aee5d282f8b646d320895c68))
+
+
+
+# [1.2.0](https://github.com/Joehoel/ahava/compare/v1.1.0...v1.2.0) (2023-08-04)
+
+
+### Features
+
+* add workflow dispatch to trigger manually ([1ae2bbf](https://github.com/Joehoel/ahava/commit/1ae2bbfcf278e864aee5d282f8b646d320895c68))
+
 ## [1.1.0](https://github.com/Joehoel/ahava/compare/v1.0.0...v1.1.0) (2023-08-04)
 
 
