@@ -8,10 +8,11 @@ const PillMeta: ComponentMeta<typeof Pill> = {
 	component: Pill,
 	args: {
 		theme: "light",
+		backgroundColor: "$backgroundStrong",
 	},
 	decorators: [
 		(Story) => (
-			<Stack p="$6">
+			<Stack backgroundColor={"$background"} p="$1" f={1}>
 				<Story />
 			</Stack>
 		),

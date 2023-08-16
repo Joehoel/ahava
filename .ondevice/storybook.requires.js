@@ -49,6 +49,7 @@ try {
 
 const getStories = () => {
   return {
+    "./components/PersonCard/PersonCard.stories.tsx": require("../components/PersonCard/PersonCard.stories.tsx"),
     "./components/Pill/Pill.stories.tsx": require("../components/Pill/Pill.stories.tsx"),
   };
 };

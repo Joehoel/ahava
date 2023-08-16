@@ -1,8 +1,8 @@
 import {
-	AlignVerticalSpaceAround,
 	Crown,
 	Filter,
 	Heart,
+	Home,
 	MessageCircle,
 	User,
 } from "@tamagui/lucide-icons";
@@ -15,48 +15,60 @@ export default function Layout() {
 	return (
 		<Tabs
 			screenOptions={{
-				headerTitle: () => (
-					<Heading fontSize={"$8"} fontWeight={"400"}>
-						ahava
-					</Heading>
-				),
-				headerLeft: () => (
-					<Stack p="$3" ml="$3" bg="$backgroundStrong" borderRadius={"$12"}>
-						<Crown color={theme.yellow9.val} />
-					</Stack>
-				),
-				headerRight: () => (
-					<Stack p="$3" mr="$3" bg="$backgroundStrong" borderRadius={"$12"}>
-						<Filter color={theme.color9.val} />
-					</Stack>
-				),
-				headerStyle: {
-					backgroundColor: theme.background.val,
-				},
-				headerShadowVisible: false,
-				tabBarActiveTintColor: theme.purple8.val,
+				tabBarActiveTintColor: theme.primary.val,
 				tabBarShowLabel: false,
+				headerTitleStyle: {
+					fontFamily: "Poppins-Medium",
+				},
 			}}
 		>
 			<Tabs.Screen
 				name="index"
 				options={{
+					headerTitleAlign: "center",
+					headerTitle: () => (
+						<Heading fontSize={"$8"} fontWeight={"400"}>
+							ahava
+						</Heading>
+					),
+					headerLeft: () => (
+						<Stack p="$3" ml="$3" bg="$backgroundStrong" borderRadius={"$12"}>
+							<Crown color={theme.color.val} />
+						</Stack>
+					),
+					headerRight: () => (
+						<Stack p="$3" mr="$3" bg="$backgroundStrong" borderRadius={"$12"}>
+							<Filter color={theme.color.val} />
+						</Stack>
+					),
+					headerStyle: {
+						backgroundColor: theme.background.val,
+					},
+					headerShadowVisible: false,
 					tabBarIcon(props) {
-						return <AlignVerticalSpaceAround {...props} />;
+						return <Home {...props} />;
 					},
 				}}
 			/>
 			<Tabs.Screen
-				name="matches"
+				name="likes"
 				options={{
+					headerShown: true,
+					title: "People have liked you",
+					headerTitleAlign: "left",
+					headerShadowVisible: false,
+					headerStyle: {
+						backgroundColor: theme.background.val,
+					},
 					tabBarIcon(props) {
 						return <Heart {...props} />;
 					},
 				}}
 			/>
 			<Tabs.Screen
-				name="messages"
+				name="chats"
 				options={{
+					headerShown: false,
 					tabBarIcon(props) {
 						return <MessageCircle {...props} />;
 					},
@@ -65,6 +77,7 @@ export default function Layout() {
 			<Tabs.Screen
 				name="profile"
 				options={{
+					headerShown: false,
 					tabBarIcon(props) {
 						return <User {...props} />;
 					},

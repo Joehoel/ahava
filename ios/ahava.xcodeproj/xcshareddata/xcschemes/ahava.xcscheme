@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "AhavaDEV.app"
-               BlueprintName = "AhavaDEV"
-               ReferencedContainer = "container:AhavaDEV.xcodeproj">
+               BuildableName = "ahava.app"
+               BlueprintName = "ahava"
+               ReferencedContainer = "container:ahava.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "AhavaDEVTests.xctest"
-               BlueprintName = "AhavaDEVTests"
-               ReferencedContainer = "container:AhavaDEV.xcodeproj">
+               BuildableName = "ahavaTests.xctest"
+               BlueprintName = "ahavaTests"
+               ReferencedContainer = "container:ahava.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "AhavaDEV.app"
-            BlueprintName = "AhavaDEV"
-            ReferencedContainer = "container:AhavaDEV.xcodeproj">
+            BuildableName = "ahava.app"
+            BlueprintName = "ahava"
+            ReferencedContainer = "container:ahava.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "AhavaDEV.app"
-            BlueprintName = "AhavaDEV"
-            ReferencedContainer = "container:AhavaDEV.xcodeproj">
+            BuildableName = "ahava.app"
+            BlueprintName = "ahava"
+            ReferencedContainer = "container:ahava.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

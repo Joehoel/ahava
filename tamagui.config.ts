@@ -1,9 +1,75 @@
-import { createAnimations } from "@tamagui/animations-react-native";
+import { createAnimations } from "@tamagui/animations-moti";
 import { createInterFont } from "@tamagui/font-inter";
 import { createMedia } from "@tamagui/react-native-media-driver";
 import { shorthands } from "@tamagui/shorthands";
-import { themes, tokens } from "@tamagui/themes";
-import { createFont, createTamagui } from "tamagui";
+import {
+	themes as defaultThemes,
+	tokens as defaultTokens,
+} from "@tamagui/themes";
+import { createFont, createTamagui, createTheme, createTokens } from "tamagui";
+
+const media = createMedia({
+	xs: { maxWidth: 660 },
+	sm: { maxWidth: 800 },
+	md: { maxWidth: 1020 },
+	lg: { maxWidth: 1280 },
+	xl: { maxWidth: 1420 },
+	xxl: { maxWidth: 1600 },
+	gtXs: { minWidth: 660 + 1 },
+	gtSm: { minWidth: 800 + 1 },
+	gtMd: { minWidth: 1020 + 1 },
+	gtLg: { minWidth: 1280 + 1 },
+	short: { maxHeight: 820 },
+	tall: { minHeight: 820 },
+	hoverNone: { hover: "none" },
+	pointerCoarse: { pointer: "coarse" },
+});
+
+const tokens = createTokens({
+	...defaultTokens,
+	color: {
+		white: "#FFFFFF",
+		black: "#000000",
+		cranberry: "#9B1B30",
+		manhattan: "#F7BB97",
+		fantasy: "#FAF0F0",
+		zircon: "#F3F7FF",
+		cod: "#1C1C1C",
+		cinder: "#151515",
+		dusty: "#949494",
+		dawn: "#a5a5a5",
+	},
+});
+
+const light = createTheme({
+	primary: tokens.color.cranberry,
+	secondary: tokens.color.manhattan,
+	background: tokens.color.fantasy,
+	backgroundStrong: tokens.color.white,
+	muted: tokens.color.dusty,
+	color: tokens.color.cod,
+});
+
+type BaseTheme = typeof light;
+
+const dark = createTheme<BaseTheme>({
+	primary: tokens.color.cranberry,
+	secondary: tokens.color.manhattan,
+	background: tokens.color.cinder,
+	backgroundStrong: tokens.color.black,
+	color: tokens.color.white,
+	muted: tokens.color.dawn,
+});
+
+const allThemes = { light, dark };
+
+type ThemeName = keyof typeof allThemes;
+
+type Themes = {
+	[key in ThemeName]: BaseTheme;
+};
+
+export const themes: Themes = allThemes;
 
 const animations = createAnimations({
 	bouncy: {
@@ -48,7 +114,8 @@ const headingFont = createFont({
 
 const config = createTamagui({
 	animations,
-	defaultTheme: "dark",
+	defaultTheme: "light",
+	excludeReactNativeWebExports: false,
 	shouldAddPrefersColorThemes: false,
 	themeClassNameOnRoot: false,
 	shorthands,
@@ -56,31 +123,32 @@ const config = createTamagui({
 		heading: headingFont,
 		body: bodyFont,
 	},
-	themes: {
-		...themes,
-		light: {
-			...themes.light,
-			background: "#F3F7FF",
-		},
-	},
+	themes,
 	tokens,
-	media: createMedia({
-		xs: { maxWidth: 660 },
-		sm: { maxWidth: 800 },
-		md: { maxWidth: 1020 },
-		lg: { maxWidth: 1280 },
-		xl: { maxWidth: 1420 },
-		xxl: { maxWidth: 1600 },
-		gtXs: { minWidth: 660 + 1 },
-		gtSm: { minWidth: 800 + 1 },
-		gtMd: { minWidth: 1020 + 1 },
-		gtLg: { minWidth: 1280 + 1 },
-		short: { maxHeight: 820 },
-		tall: { minHeight: 820 },
-		hoverNone: { hover: "none" },
-		pointerCoarse: { pointer: "coarse" },
-	}),
+	media,
 });
+
+// const config = createTamagui({
+// 	animations,
+// 	defaultTheme: "dark",
+// 	excludeReactNativeWebExports: false,
+// 	shouldAddPrefersColorThemes: false,
+// 	themeClassNameOnRoot: false,
+// 	shorthands,
+// 	fonts: {
+// 		heading: headingFont,
+// 		body: bodyFont,
+// 	},
+// 	themes: {
+// 		...defaultThemes,
+// 		light: {
+// 			...defaultThemes.light,
+// 			background: "#FAF0F0",
+// 		},
+// 	},
+// 	tokens,
+// 	media,
+// });
 
 export type AppConfig = typeof config;
 

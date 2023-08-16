@@ -1,15 +1,15 @@
-import React from "react";
 import { getStorybookUI } from "@storybook/react-native";
+import React from "react";
 import "./doctools";
 import "./storybook.requires";
-import { TamaguiProvider } from "tamagui";
-
-import config from "../tamagui.config";
+import { Providers } from "../components";
 
 const StorybookUIRoot = getStorybookUI({});
 
-export default () => (
-  <TamaguiProvider config={config}>
-    <StorybookUIRoot />
-  </TamaguiProvider>
-);
+export default () => {
+  return (
+    <Providers>
+      <StorybookUIRoot />
+    </Providers>
+  );
+};
