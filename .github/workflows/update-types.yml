@@ -24,7 +24,7 @@ jobs:
           node-version: 16
 
       - name: Update types
-        uses: borales/actions-yarn@v3
+        uses: borales/actions-yarn@v4.2.0
         with:
           cmd: update-types
 
