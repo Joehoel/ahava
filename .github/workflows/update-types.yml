@@ -13,15 +13,18 @@ jobs:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       PROJECT_REF: sgryfkwnlstdimavavqp
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/setup-node@v2.1.5
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: yarn
-      - run: yarn update-types
+      - name: Update database types
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: update-types # will run `yarn install` command
       - name: check for file changes
         id: git_status
         run: |

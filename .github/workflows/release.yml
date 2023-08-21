@@ -12,19 +12,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: yarn
 
       - name: Install dependencies
-        run: yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
 
       - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: release
