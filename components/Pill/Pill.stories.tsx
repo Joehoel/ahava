@@ -1,7 +1,8 @@
-import { Pill } from "@components";
 import { ComponentMeta, ComponentStory } from "@storybook/react-native";
 import { Ruler, TextCursor } from "@tamagui/lucide-icons";
 import { Stack, XStack } from "tamagui";
+
+import { Pill } from "#app/components";
 
 const PillMeta: ComponentMeta<typeof Pill> = {
 	title: "Pill",
@@ -33,7 +34,7 @@ export const Basic: PillStory = (args) => (
 );
 
 export const Orange: PillStory = (args) => (
-	<Pill {...args} theme="orange_active">
+	<Pill {...args}>
 		<Pill.Icon>
 			<Ruler />
 		</Pill.Icon>

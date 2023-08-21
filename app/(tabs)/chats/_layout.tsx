@@ -13,8 +13,6 @@ export default function Layout() {
 				},
 				headerTintColor: "#DD5E89",
 				headerBackTitleVisible: false,
-				headerBlurEffect: "prominent",
-				headerTransparent: true,
 			}}
 		>
 			<Stack.Screen name="index" />

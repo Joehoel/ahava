@@ -9,22 +9,11 @@ export type ProfileCardProps = {
 	onPress: () => void;
 };
 
-export function ProfileCard({
-	title,
-	description,
-	onPress,
-	icon,
-}: ProfileCardProps) {
+export function ProfileCard({ title, description, onPress, icon }: ProfileCardProps) {
 	const theme = useTheme();
 
 	return (
-		<YStack
-			onPress={onPress}
-			bg="$backgroundStrong"
-			gap="$1"
-			p="$4"
-			borderRadius={"$6"}
-		>
+		<YStack onPress={onPress} bg="$backgroundStrong" gap="$1" p="$4" borderRadius={"$6"}>
 			<XStack ai="center" gap="$4">
 				<YStack f={1}>
 					<XStack ai="center" gap="$4">
@@ -33,7 +22,7 @@ export function ProfileCard({
 					</XStack>
 					<Paragraph color="$muted">{description}</Paragraph>
 				</YStack>
-				<ChevronRight color={theme.muted.val} />
+				<ChevronRight color={theme.muted.variable} />
 			</XStack>
 		</YStack>
 	);

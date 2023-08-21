@@ -1,4 +1,4 @@
-import { Providers } from "@components";
+import { Providers } from "#app/components";
 import Constants from "expo-constants";
 import { Slot } from "expo-router";
 

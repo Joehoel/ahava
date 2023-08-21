@@ -2,10 +2,7 @@ import { createAnimations } from "@tamagui/animations-moti";
 import { createInterFont } from "@tamagui/font-inter";
 import { createMedia } from "@tamagui/react-native-media-driver";
 import { shorthands } from "@tamagui/shorthands";
-import {
-	themes as defaultThemes,
-	tokens as defaultTokens,
-} from "@tamagui/themes";
+import { tokens as defaultTokens } from "@tamagui/themes";
 import { createFont, createTamagui, createTheme, createTokens } from "tamagui";
 
 const media = createMedia({
@@ -38,6 +35,7 @@ const tokens = createTokens({
 		cinder: "#151515",
 		dusty: "#949494",
 		dawn: "#a5a5a5",
+		transparent: "#00000000",
 	},
 });
 
@@ -46,8 +44,12 @@ const light = createTheme({
 	secondary: tokens.color.manhattan,
 	background: tokens.color.fantasy,
 	backgroundStrong: tokens.color.white,
+	borderColor: tokens.color.zircon,
+	borderColorFocus: tokens.color.cranberry,
 	muted: tokens.color.dusty,
 	color: tokens.color.cod,
+	colorPress: tokens.color.cranberry,
+	transparent: tokens.color.transparent,
 });
 
 type BaseTheme = typeof light;
@@ -57,8 +59,12 @@ const dark = createTheme<BaseTheme>({
 	secondary: tokens.color.manhattan,
 	background: tokens.color.cinder,
 	backgroundStrong: tokens.color.black,
+	borderColor: tokens.color.zircon,
+	borderColorFocus: tokens.color.cranberry,
 	color: tokens.color.white,
+	colorPress: tokens.color.cranberry,
 	muted: tokens.color.dawn,
+	transparent: tokens.color.transparent,
 });
 
 const allThemes = { light, dark };

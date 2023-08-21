@@ -1,8 +1,8 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ProfileCard } from "@components/ProfileCard";
-import Safe from "@components/Safe";
 import { Hand, Instagram, User, Wine } from "@tamagui/lucide-icons";
 import { Avatar, H3, ScrollView, Text, XStack, YStack } from "tamagui";
+
+import { ProfileCard } from "#app/components";
 
 export default function Profile() {
 	const insets = useSafeAreaInsets();
@@ -10,16 +10,8 @@ export default function Profile() {
 	return (
 		<ScrollView bg="$background" space="$6" pt={insets.top}>
 			<YStack ai="center" gap={"$2"}>
-				<Avatar
-					circular
-					size={"$10"}
-					borderColor={"$backgroundStrong"}
-					borderWidth={"$1.5"}
-				>
-					<Avatar.Image
-						resizeMode="cover"
-						source={require("../../assets/hannah.jpg")}
-					/>
+				<Avatar circular size={"$10"} borderColor={"$backgroundStrong"} borderWidth={"$1.5"}>
+					<Avatar.Image resizeMode="cover" source={require("../../assets/hannah.jpg")} />
 				</Avatar>
 
 				<H3 fontWeight={"600"}>Hannah Kuijper, 23</H3>

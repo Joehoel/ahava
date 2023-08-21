@@ -49,6 +49,8 @@ try {
 
 const getStories = () => {
   return {
+    "./components/ChatInput/ChatInput.stories.tsx": require("../components/ChatInput/ChatInput.stories.tsx"),
+    "./components/Filters/Filters.stories.tsx": require("../components/Filters/Filters.stories.tsx"),
     "./components/PersonCard/PersonCard.stories.tsx": require("../components/PersonCard/PersonCard.stories.tsx"),
     "./components/Pill/Pill.stories.tsx": require("../components/Pill/Pill.stories.tsx"),
   };

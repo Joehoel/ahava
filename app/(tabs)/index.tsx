@@ -1,17 +1,27 @@
-import { PersonCard } from "@components";
-import { YStack } from "tamagui";
+import Carousel from "react-native-reanimated-carousel";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useWindowDimensions, YStack } from "tamagui";
+
+import { PersonCard } from "#app/components";
+import { PEOPLE } from "#app/constants/people";
 
 export default function Home() {
+	const dimensions = useWindowDimensions();
+	const insets = useSafeAreaInsets();
+	const tabBarHeight = useBottomTabBarHeight();
+
 	return (
 		<YStack pt={"$4"} f={1} bg="$background" py="$6">
-			<PersonCard
-				person={{
-					age: 23,
-					hobbies: ["Kerk", "Muziek", "Lezen"],
-					name: "Hannah",
-					image:
-						"https://scontent-ams2-1.cdninstagram.com/v/t51.2885-15/242060596_450269776420062_925912809023593784_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_cat=106&_nc_ohc=dg3g1YVIk0IAX-OnAtD&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MjY2MTk1MDE3MDY3MTg5NDA5MQ%3D%3D.2-ccb7-5&oh=00_AfBSNfe5Iz7eWx4UqDef-ZqQ0BSeyq2PzydFltKyoFcdYg&oe=64D431C3&_nc_sid=b41fef",
-					location: "Ede, Gelderland",
+			<Carousel
+				data={PEOPLE}
+				renderItem={({ item: person }) => <PersonCard person={person} />}
+				width={dimensions.width}
+				height={dimensions.height - insets.top - tabBarHeight * 2}
+				vertical
+				onSnapToItem={(index) => {
+					// TODO: Remove previous
+					console.log(index);
 				}}
 			/>
 		</YStack>
