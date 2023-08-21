@@ -20,10 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Update database types
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: update-types # will run `yarn install` command
+      - run: yarn update-types
       - name: check for file changes
         id: git_status
         run: |

@@ -20,14 +20,10 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+        run: yarn install
 
       - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: release
+        run: npx semantic-release
