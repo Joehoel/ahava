@@ -119,5 +119,6 @@
 	"main": "expo-router/entry",
 	"name": "ahava",
 	"version": "1.2.0",
-	"private": true
+	"private": true,
+	"packageManager": "yarn@3.6.2"
 }
