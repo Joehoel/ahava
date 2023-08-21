@@ -13,15 +13,22 @@ jobs:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       PROJECT_REF: sgryfkwnlstdimavavqp
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: yarn update-types
-      - name: check for file changes
+
+      - name: Update types
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: update-types
+
+      - name: Check for file changes
         id: git_status
         run: |
           echo "::set-output name=status::$(git status -s)"
