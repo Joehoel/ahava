@@ -24,7 +24,7 @@ jobs:
           node-version: 16
 
       - name: Install Yarn v2
-        run: yarn set version berry
+        run: yarn set version stable
 
       - name: Get Yarn cache path
         id: yarn-cache-dir-path
