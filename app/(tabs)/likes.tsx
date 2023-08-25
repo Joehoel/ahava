@@ -7,13 +7,7 @@ type LikedCardProps = {
 
 function LikedCard({ name }: LikedCardProps) {
 	return (
-		<XStack
-			p="$4"
-			bg="$backgroundStrong"
-			borderRadius={"$6"}
-			gap={"$4"}
-			ai="center"
-		>
+		<XStack p="$4" bg="$backgroundStrong" borderRadius={"$6"} gap={"$4"} ai="center">
 			<Avatar circular>
 				<Avatar.Image source={require("../../assets/hannah.jpg")} />
 			</Avatar>
@@ -31,9 +25,8 @@ function LikedCard({ name }: LikedCardProps) {
 					ellipsizeMode="tail"
 					f={1}
 				>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-					quisquam nobis delectus a facere minima id praesentium molestias
-					corrupti sequi!
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quisquam nobis delectus a
+					facere minima id praesentium molestias corrupti sequi!
 				</Text>
 			</YStack>
 			{/* Chat button */}

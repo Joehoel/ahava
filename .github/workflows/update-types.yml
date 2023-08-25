@@ -14,32 +14,13 @@ jobs:
       PROJECT_REF: sgryfkwnlstdimavavqp
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
 
-      - name: Install Yarn v2
-        run: yarn set version stable
-
-      - name: Get Yarn cache path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Run install
-        run: yarn install
+      - name: Install
+        uses: ./.github/actions/install
 
       - name: Update types
         run: yarn update-types

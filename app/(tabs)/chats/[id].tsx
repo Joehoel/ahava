@@ -1,26 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import {
-	useCallback,
-	useEffect,
-	useLayoutEffect,
-	useRef,
-	useState,
-} from "react";
-import {
-	FlatList,
-	KeyboardAvoidingView,
-	Platform,
-	TextInput,
-	TouchableOpacity,
-} from "react-native";
-import { KeyboardGestureArea } from "react-native-keyboard-controller";
+import { useCallback, useRef, useState } from "react";
+import { FlatList, KeyboardAvoidingView, Platform, TouchableOpacity } from "react-native";
 import { LinearGradient } from "react-native-linear-gradient";
 import { Check, CheckCheck, Send } from "@tamagui/lucide-icons";
 import { format } from "date-fns";
 import { useFocusEffect } from "expo-router";
 import {
-	Input,
 	ScrollView,
 	Stack,
 	styled,
@@ -99,13 +85,7 @@ type MessageProps = {
 	sent?: boolean;
 };
 
-function Message({
-	isMe = false,
-	text,
-	date,
-	received = false,
-	sent = false,
-}: MessageProps) {
+function Message({ isMe = false, text, date, received = false, sent = false }: MessageProps) {
 	const theme = useTheme();
 
 	const { style } = useStyle(Stack, {
@@ -120,20 +100,11 @@ function Message({
 
 	const colors = isMe
 		? ["#DD5E89", "#F7BB97"]
-		: [theme.backgroundStrong.val, theme.backgroundStrong.val];
+		: [theme.backgroundStrong.val.toString(), theme.backgroundStrong.val.toString()];
 
 	return (
-		<YStack
-			alignSelf={isMe ? "flex-end" : "flex-start"}
-			maxWidth={"80%"}
-			gap="$1.5"
-		>
-			<LinearGradient
-				style={style}
-				colors={colors}
-				start={{ x: 0.0, y: 0.0 }}
-				end={{ x: 1, y: 1 }}
-			>
+		<YStack alignSelf={isMe ? "flex-end" : "flex-start"} maxWidth={"80%"} gap="$1.5">
+			<LinearGradient style={style} colors={colors} start={{ x: 0.0, y: 0.0 }} end={{ x: 1, y: 1 }}>
 				<Text theme={isMe ? "dark" : "light"}>{text}</Text>
 			</LinearGradient>
 			<XStack alignSelf={isMe ? "flex-end" : "flex-start"} gap="$2" ai="center">
@@ -146,7 +117,7 @@ function Message({
 							isMe: true,
 							received: true,
 						},
-						() => <CheckCheck size={12} color={theme.muted.val} />
+						() => <CheckCheck size={12} color={theme.muted.val.toString()} />
 					)
 					.with(
 						{
@@ -154,7 +125,7 @@ function Message({
 							received: false,
 							sent: true,
 						},
-						() => <Check size={12} color={theme.muted.val} />
+						() => <Check size={12} color={theme.muted.val.toString()} />
 					)
 					.otherwise(() => null)}
 				{/* {sent && <Check size={12} color={theme.muted.val} />}
@@ -166,20 +137,6 @@ function Message({
 
 export default function Chat() {
 	const [messages, setMessages] = useState(MESSAGES);
-
-	// const { id } = useLocalSearchParams();
-
-	// 				bg="$backgroundStrong"
-	// 				lineHeight={16}
-	// 				// paddingVertical={0}
-	// 				borderColor={"$backgroundStrong"}
-	// 				placeholder="Message..."
-	// 				textAlignVertical="top"
-	// 				allowFontScaling={false}
-	// 				returnKeyType="send"
-	// 				height="100%"
-	// 				flex={1}
-	// 				maxLength={250}
 
 	const { style: listStyle } = useStyle(ScrollView, {
 		padding: "$4",
@@ -198,65 +155,6 @@ export default function Chat() {
 	});
 
 	const colors = ["#DD5E89", "#F7BB97"];
-
-	// return (
-	// 	<GiftedChat
-	// 		keyboardShouldPersistTaps="never"
-	// 		alwaysShowSend
-	// 		placeholder="Message..."
-	// 		renderComposer={(props) => (
-	// 			<Composer {...props} textInputStyle={{ padding: 10 }} />
-	// 		)}
-	// 		renderInputToolbar={(props) => (
-	// 			<InputToolbar {...props} containerStyle={{ padding: 10 }} />
-	// 		)}
-	// 		renderBubble={({ position, currentMessage: message, optionTitles }) => {
-	// 			console.log(
-	// 				"🚀 ~ file: [id].tsx:146 ~ Chat ~ optionTitles:",
-	// 				optionTitles
-	// 			);
-
-	// 			return (
-	// 				<Message
-	// 					isMe={position === "right"}
-	// 					date={new Date(message.createdAt)}
-	// 					text={message.text}
-	// 					received={message.received}
-	// 					sent={message.sent}
-	// 				/>
-	// 			);
-	// 		}}
-	// 		renderSend={() => (
-	// 			<LinearGradient
-	// 				start={{ x: 0.0, y: 0.0 }}
-	// 				end={{ x: 1, y: 1 }}
-	// 				colors={colors}
-	// 				style={style}
-	// 			>
-	// 				<Send color="white" />
-	// 			</LinearGradient>
-	// 		)}
-	// 		user={{ _id: 2, name: "Hannah Kuijper" }}
-	// 		messages={[
-	// 			{
-	// 				_id: 1,
-	// 				createdAt: new Date(),
-	// 				text: "In nulla elit irure laboris aliqua. Ad sit et nulla. Laborum incididunt nostrud veniam nostrud adipisicing exercitation quis occaecat excepteur. Consequat dolore minim enim qui consectetur et ad occaecat consectetur nulla veniam est magna. Fugiat ad voluptate culpa enim labore excepteur consequat occaecat laborum id consequat elit. Id dolor ipsum velit velit minim elit ullamco consectetur.",
-	// 				user: { _id: 1, name: "Frank Visser" },
-	// 				sent: true,
-	// 				received: true,
-	// 			},
-	// 			{
-	// 				_id: 2,
-	// 				createdAt: new Date(),
-	// 				text: "In nulla elit irure laboris aliqua. Ad sit et nulla. Laborum incididunt nostrud veniam nostrud adipisicing exercitation quis occaecat excepteur. Consequat dolore minim enim qui consectetur et ad occaecat consectetur nulla veniam est magna. Fugiat ad voluptate culpa enim labore excepteur consequat occaecat laborum id consequat elit. Id dolor ipsum velit velit minim elit ullamco consectetur.",
-	// 				user: { _id: 2, name: "Hannah Kuijper" },
-	// 				sent: true,
-	// 				received: true,
-	// 			},
-	// 		]}
-	// 	/>
-	// );
 
 	const theme = useTheme();
 
@@ -301,7 +199,7 @@ export default function Chat() {
 				contentInsetAdjustmentBehavior="automatic"
 				scrollEventThrottle={16}
 				onContentSizeChange={scrollToBottom}
-				style={{ backgroundColor: theme.background.val }}
+				style={{ backgroundColor: theme.background.val.toString() }}
 				data={messages}
 				contentContainerStyle={listStyle}
 				renderItem={({ item: message }) => (
@@ -324,29 +222,31 @@ export default function Chat() {
 				ai="flex-end"
 				space="$2"
 			>
-				<TextArea
-					accessibilityLabel="Message input"
-					onChangeText={setText}
-					placeholder="Message..."
-					textAlignVertical="top"
-					returnKeyType="send"
-					value={text}
-					blurOnSubmit={false}
-					onSubmitEditing={(event) => {
-						event.preventDefault();
-						onSend(text);
-					}}
-					maxLength={2000}
-					bg="$backgroundStrong"
-					lineHeight={18}
-					fontSize={"$4"}
-					paddingTop="$3"
-					paddingBottom="$3"
-					numberOfLines={1}
-					flex={1}
-					height={"100%"}
-					// borderColor={"$backgroundStrong"}
-				/>
+				<KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+					<TextArea
+						accessibilityLabel="Message input"
+						onChangeText={setText}
+						placeholder="Message..."
+						textAlignVertical="top"
+						returnKeyType="send"
+						value={text}
+						blurOnSubmit={false}
+						onSubmitEditing={(event) => {
+							event.preventDefault();
+							onSend(text);
+						}}
+						maxLength={2000}
+						bg="$backgroundStrong"
+						lineHeight={18}
+						fontSize={"$4"}
+						paddingTop="$3"
+						paddingBottom="$3"
+						numberOfLines={1}
+						flex={1}
+						height={"100%"}
+						// borderColor={"$backgroundStrong"}
+					/>
+				</KeyboardAvoidingView>
 				<TouchableOpacity onPress={() => onSend(text)}>
 					<LinearGradient
 						start={{ x: 0.0, y: 0.0 }}
