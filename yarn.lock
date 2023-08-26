@@ -2810,11 +2810,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/cli@npm:^0.20.0":
-  version: 0.20.0
-  resolution: "@manypkg/cli@npm:0.20.0"
+"@manypkg/cli@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "@manypkg/cli@npm:0.21.0"
   dependencies:
-    "@manypkg/get-packages": ^2.0.0
+    "@manypkg/get-packages": ^2.2.0
     chalk: ^2.4.2
     detect-indent: ^6.0.0
     find-up: ^4.1.0
@@ -2829,7 +2829,7 @@ __metadata:
     validate-npm-package-name: ^3.0.0
   bin:
     manypkg: bin.js
-  checksum: 9fad4437b5dcf45f81e9311ef1f9284a6aad70ccd5665c5295eb2b212f1113beb918efcdba938857c7dc73147d89cd96c1591b31a94c5f41a398e8f76e8a1174
+  checksum: cea49492e2feec2faec0f9dcf79b97c61ced34f8c978658d50eb9529f2d77b951c601d6dec5199df1570b394682d7fbf435c60f1a6ee09c5e3402b6205d72bca
   languageName: node
   linkType: hard
 
@@ -2844,7 +2844,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@manypkg/get-packages@npm:^2.0.0":
+"@manypkg/get-packages@npm:^2.2.0":
   version: 2.2.0
   resolution: "@manypkg/get-packages@npm:2.2.0"
   dependencies:
@@ -7982,7 +7982,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@faker-js/faker": ^8.0.2
     "@google/semantic-release-replace-plugin": 1.1.0
-    "@manypkg/cli": ^0.20.0
+    "@manypkg/cli": ^0.21.0
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/datetimepicker": 7.2.0
     "@react-native-community/slider": 4.4.2
