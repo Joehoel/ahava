@@ -22,7 +22,7 @@
     "@react-native-community/datetimepicker": "7.2.0",
     "@react-native-community/slider": "4.4.2",
     "@react-navigation/bottom-tabs": "^6.5.8",
-    "@shopify/flash-list": "1.4.3",
+    "@shopify/flash-list": "1.6.1",
     "@supabase/supabase-js": "^2.31.0",
     "@suspensive/react": "^1.11.6",
     "@suspensive/react-query": "^1.11.6",
